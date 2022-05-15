@@ -1,0 +1,46 @@
+package:
+    name: splitvar
+    version: {{ GIT_DESCRIBE_TAG }}
+
+build:
+    number: {{ GIT_DESCRIBE_NUMBER }}
+    string: {{ GIT_BUILD_STR }}
+
+source:
+    git_url: ../
+
+build:
+    script: "{{ PYTHON }} -m pip install . --no-deps"
+    noarch: python
+
+requirements:
+    host:
+        - python
+        - pip
+        - pbr
+    run:
+        - python
+        - numpy
+        - netcdf4
+        - libnetcdf
+        - pandas
+        - xarray
+        - networkx
+        - cftime
+        - dask 
+        - distributed
+
+
+test:
+    source_files:
+        - setup.cfg
+        - test
+    requires:
+        - pytest
+    commands:
+        - pytest test
+
+about:
+    home: https://github.com/coecms/splitvar
+    license: Apache 2.0
+    license_file: LICENSE
