@@ -20,7 +20,7 @@ import sys
 import argparse
 import xarray as xr
 import glob
-from gfsRed2Reg import create_combine_ds, regrid_red2reg, update_combine_ds 
+from gfsmppnccombine import create_combine_ds, regrid_red2reg, update_combine_ds 
 
 def parse_args(args):
 

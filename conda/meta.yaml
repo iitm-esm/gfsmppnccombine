@@ -1,5 +1,5 @@
 package:
-    name: splitvar
+    name: gfsmppnccombine
     version: {{ GIT_DESCRIBE_TAG }}
 
 build:
@@ -41,6 +41,6 @@ test:
         - pytest test
 
 about:
-    home: https://github.com/coecms/splitvar
+    home: https://github.com/coecms/gfsmppnccombine
     license: Apache 2.0
     license_file: LICENSE
