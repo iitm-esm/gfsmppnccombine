@@ -32,6 +32,12 @@ def _get_decomp(ds):
     decomp = ds['lat'].attrs['decomp_gfs']
     return decomp
 
+def get_time_var(ds):
+    for coord in ds.coords:
+        if 'since' in ds[coord].attrs['units']:
+            return coord
+    return None
+
 def get_globalNlat(ds):
     return ds['lat'].attrs['domain_decomposition'][1]
 
@@ -123,6 +129,9 @@ def create_combine_ds(ds):
     lon.attrs.pop('domain_decomposition')
     lon.attrs.pop('lonsperlat')
     ds_out['lon'] = lon
+    for coord in ds_out.coords:
+        if coord in ('lat', 'lon',): continue
+        ds_out[coord] = ds[coord]
     
     return ds_out
 

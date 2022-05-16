@@ -20,7 +20,7 @@ import sys
 import argparse
 import xarray as xr
 import glob
-from gfsmppnccombine import create_combine_ds, regrid_red2reg, update_combine_ds 
+from gfsmppnccombine import create_combine_ds, regrid_red2reg, update_combine_ds, get_time_var 
 
 def parse_args(args):
 
@@ -64,11 +64,8 @@ def main(args):
                 ds_out = create_combine_ds(ds)
             regrid_red2reg(ds)
             update_combine_ds(ds_out,ds)
-        ds_out.to_netcdf(path=in_file,mode='w')
+        ds_out.to_netcdf(path=in_file,mode='w',unlimited_dims=get_time_var(ds))
 
-        ds = xr.open_dataset(file_path, 
-                             decode_cf=False, 
-                             engine='netcdf4')
 
 if __name__ == '__main__':
     main_argv()
