@@ -67,7 +67,7 @@ def set_regridders(ds, method='nearest_s2d'):
             ds_out=ds_out, 
             method=method, 
             periodic=True,
-            reuse_weights=True
+            #reuse_weights=True
             )
     return maxlon, method
 
